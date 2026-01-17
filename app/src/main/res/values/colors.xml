@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Modern Palette -->
+    <color name="colorPrimary">#2D3436</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#0984E3</color>
+    <color name="backgroundColor">#F1F2F6</color>
+    
+    <!-- UI Element Colors -->
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="textPrimary">#2D3436</color>
+    <color name="textSecondary">#636E72</color>
+    
+    <!-- Action Colors -->
+    <color name="success">#00B894</color>
+    <color name="danger">#D63031</color>
+    <color name="warning">#FDCB6E</color>
+    <color name="info">#74B9FF</color>
+</resources>

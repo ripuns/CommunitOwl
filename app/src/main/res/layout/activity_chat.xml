@@ -13,6 +13,16 @@
         android:layout_height="80dp"
         android:background="@color/colorPrimary" />
 
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_revert"
+        app:tint="@color/white" />
+
     <TextView
         android:id="@+id/chatHeaderText"
         android:layout_width="wrap_content"
@@ -47,8 +57,7 @@
                 android:padding="20dp"
                 android:lineSpacingExtra="8dp"
                 android:textSize="16sp"
-                android:textColor="@color/textPrimary"
-                android:text="System: Welcome to the community chat!\n\nNeighbor 1: Is the park open today?\nNeighbor 2: Yes, it is! Just walked by.\n" />
+                android:textColor="@color/textPrimary" />
         </androidx.cardview.widget.CardView>
     </ScrollView>
 

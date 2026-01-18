@@ -3,7 +3,6 @@ package com.example.communityowl;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -22,6 +21,7 @@ public class InfraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infra);
 
+        ImageButton btnBack = findViewById(R.id.btnBack);
         ListView listView = findViewById(R.id.infraListView);
         final EditText infraInput = findViewById(R.id.infraInput);
         ImageButton btnSend = findViewById(R.id.btnInfraSend);
@@ -29,7 +29,10 @@ public class InfraActivity extends AppCompatActivity {
         ImageButton btnUpload = findViewById(R.id.btnUpload);
         ImageButton btnRecord = findViewById(R.id.btnRecord);
 
-        // Requirement C: Updates on local infrastructure
+        btnBack.setOnClickListener(v -> {
+            finish(); // Goes back to MainActivity
+        });
+
         updatesList = new ArrayList<>(Arrays.asList(
             "New Street Lights Installation - Park Avenue",
             "Pothole Repair - 5th Cross Road",
@@ -40,26 +43,16 @@ public class InfraActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, updatesList);
         listView.setAdapter(adapter);
 
-        // Logic to send text updates
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String text = infraInput.getText().toString();
-                if (!text.isEmpty()) {
-                    updatesList.add(0, "Update: " + text); // Add to top
-                    adapter.notifyDataSetChanged();
-                    infraInput.setText("");
-                }
+        btnSend.setOnClickListener(v -> {
+            String text = infraInput.getText().toString();
+            if (!text.isEmpty()) {
+                updatesList.add(0, "Update: " + text);
+                adapter.notifyDataSetChanged();
+                infraInput.setText("");
             }
         });
 
-        // Placeholder listeners for multimedia (Requirement C: Photo/Video/Audio)
-        View.OnClickListener multimediaListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(InfraActivity.this, "Feature coming soon: Multimedia selection", Toast.LENGTH_SHORT).show();
-            }
-        };
+        View.OnClickListener multimediaListener = v -> Toast.makeText(InfraActivity.this, "Feature coming soon", Toast.LENGTH_SHORT).show();
 
         btnCamera.setOnClickListener(multimediaListener);
         btnUpload.setOnClickListener(multimediaListener);

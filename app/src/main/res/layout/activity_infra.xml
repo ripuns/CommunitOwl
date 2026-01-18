@@ -11,12 +11,23 @@
         android:layout_height="120dp"
         android:background="@color/colorPrimary" />
 
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_revert"
+        app:tint="@color/white" />
+
     <TextView
         android:id="@+id/infraHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@id/btnBack"
         android:layout_marginTop="40dp"
+        android:layout_marginStart="8dp"
         android:text="Infrastructure"
         android:textColor="@color/white"
         android:textSize="28sp"

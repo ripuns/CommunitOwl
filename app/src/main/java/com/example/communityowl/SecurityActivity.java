@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 public class SecurityActivity extends AppCompatActivity {
@@ -28,20 +29,20 @@ public class SecurityActivity extends AppCompatActivity {
         
         ArrayList<String> historyList;
         if (historySet == null) {
-            historyList = new ArrayList<>(Arrays.asList(
-                "Suspicious Vehicle - 10:30 AM", 
-                "Fire Drill - Yesterday", 
-                "Stray Dog Alert - Monday"
+            historyList = new ArrayList<>(List.of(
+                    "No security issues reported"
             ));
         } else {
             historyList = new ArrayList<>(historySet);
-            
-            // Simple sorting:
-            // 1. Sort A-Z
+
             Collections.sort(historyList);
-            // 2. Reverse it to get Z-A (Most recent dates/times at the top)
             Collections.reverse(historyList);
         }
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("chat_history", "Neighbor: Hello!");
+        editor.apply();
+        prefs.edit().remove("security_history").apply();
+        prefs.edit().clear().apply();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, historyList);

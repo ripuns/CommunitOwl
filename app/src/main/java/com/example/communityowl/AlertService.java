@@ -9,14 +9,13 @@ public class AlertService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // This code runs when the service is started
         Toast.makeText(this, "Monitoring Community Security...", Toast.LENGTH_LONG).show();
 
-        // Simulate a security alert being triggered
+        // simulate a security alert being triggered
         // In a real app, this would listen to a web server
         sendSecurityBroadcast();
 
-        return START_STICKY; // Keeps the service running in the background
+        return START_STICKY; // keeps the service running in the background
     }
 
     private void sendSecurityBroadcast() {
@@ -28,7 +27,7 @@ public class AlertService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        return null; // We don't need binding for this simple app
+        return null;
     }
 
     @Override

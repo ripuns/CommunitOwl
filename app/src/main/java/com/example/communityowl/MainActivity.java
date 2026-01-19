@@ -47,10 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
             String currentTime = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
 
-            // 1. Log to Security History
+            // log to security history
             logServiceStart(currentTime);
-
-            // 2. Send automated message to Community Chat
+            // send automated message to community chat
             postToCommunityChat("System: Security threat detected by a neighbor at " + currentTime);
 
             Toast.makeText(MainActivity.this, "Security Service Started", Toast.LENGTH_SHORT).show();

@@ -1,15 +1,21 @@
 package com.example.communityowl;
 
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class InfraActivity extends AppCompatActivity {
     
@@ -29,24 +35,42 @@ public class InfraActivity extends AppCompatActivity {
         ImageButton btnUpload = findViewById(R.id.btnUpload);
         ImageButton btnRecord = findViewById(R.id.btnRecord);
 
+        SharedPreferences prefs = getSharedPreferences("CommunityOwlPrefs", MODE_PRIVATE);
         btnBack.setOnClickListener(v -> {
-            finish(); // Goes back to MainActivity
+            finish(); // goes back to MainActivity
         });
+        Set<String> savedUpdates = prefs.getStringSet("infra_updates", null);
 
-        updatesList = new ArrayList<>(Arrays.asList(
-            "New Street Lights Installation - Park Avenue",
-            "Pothole Repair - 5th Cross Road",
-            "Park Renovation starting next Monday"
-        ));
+        if (savedUpdates == null) {
+            // default data
+            updatesList = new ArrayList<>(Arrays.asList(
+                    "New Street Lights Installation - Park Avenue",
+                    "Pothole Repair - 5th Cross Road",
+                    "Park Renovation starting next Monday"
+            ));
+        } else {
+            // load the previously saved list
+            updatesList = new ArrayList<>(savedUpdates);
+        }
 
-        adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, updatesList);
+        // custom ArrayAdapter to set text color to black
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, updatesList) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView textView = view.findViewById(android.R.id.text1);
+                textView.setTextColor(Color.BLACK);
+                return view;
+            }
+        };
         listView.setAdapter(adapter);
 
         btnSend.setOnClickListener(v -> {
             String text = infraInput.getText().toString();
             if (!text.isEmpty()) {
                 updatesList.add(0, "Update: " + text);
+                Set<String> set = new HashSet<>(updatesList);
+                prefs.edit().putStringSet("infra_updates", set).apply();
                 adapter.notifyDataSetChanged();
                 infraInput.setText("");
             }

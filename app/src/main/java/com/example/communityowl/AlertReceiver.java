@@ -12,8 +12,6 @@ public class AlertReceiver extends BroadcastReceiver {
         // This code runs when the "SECURITY_ALERT" broadcast is received
         if ("com.community.SECURITY_ALERT".equals(intent.getAction())) {
             Toast.makeText(context, "EMERGENCY: Suspicious activity detected in your area!", Toast.LENGTH_LONG).show();
-
-            // Note: In a final version, you would trigger a Notification here
         }
     }
 }

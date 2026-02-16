@@ -1,10 +1,12 @@
 package com.example.communityowl;
 
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ public class SecurityActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.alertListView);
 
         btnBack.setOnClickListener(v -> finish());
+        Button btnClearHistory = findViewById(R.id.btnClearHistory);
 
         SharedPreferences prefs = getSharedPreferences("CommunityOwlPrefs", MODE_PRIVATE);
         Set<String> historySet = prefs.getStringSet("security_history", null);
@@ -41,7 +44,7 @@ public class SecurityActivity extends AppCompatActivity {
             Collections.reverse(historyList);
         }
 
-        // Custom ArrayAdapter to set text color to BLACK
+        // Custom ArrayAdapter to set text color to black
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, historyList) {
             @Override
@@ -53,5 +56,18 @@ public class SecurityActivity extends AppCompatActivity {
             }
         };
         listView.setAdapter(adapter);
+
+        // clear history logic
+        btnClearHistory.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(SecurityActivity.this);
+            builder.setMessage("Are you sure you want to clear the history?");
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                prefs.edit().remove("security_history").apply();
+                historyList.clear();
+                adapter.notifyDataSetChanged();
+            });
+            builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
     }
 }

@@ -1,25 +1,40 @@
-package com.example.communityowl; // Check your package name
+package com.example.communityowl;
 
 import android.app.Service;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.widget.Toast;
 
 public class AlertService extends Service {
 
+    private MediaPlayer mediaPlayer;
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Toast.makeText(this, "Monitoring Community Security...", Toast.LENGTH_LONG).show();
 
+        // Play pre-recorded audio message
+        playMonitoringAudio();
+
         // simulate a security alert being triggered
-        // In a real app, this would listen to a web server
         sendSecurityBroadcast();
 
-        return START_STICKY; // keeps the service running in the background
+        return START_STICKY;
+    }
+
+    private void playMonitoringAudio() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.monitoring_started);
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.release();
+                mediaPlayer = null;
+            });
+        }
     }
 
     private void sendSecurityBroadcast() {
-        // This sends a signal that our Broadcast Receiver will catch
         Intent intent = new Intent(this, AlertReceiver.class);
         intent.setAction("com.community.SECURITY_ALERT");
         sendBroadcast(intent);
@@ -32,6 +47,10 @@ public class AlertService extends Service {
 
     @Override
     public void onDestroy() {
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
         super.onDestroy();
         Toast.makeText(this, "Security Monitoring Stopped", Toast.LENGTH_SHORT).show();
     }

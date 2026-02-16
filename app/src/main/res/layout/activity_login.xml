@@ -109,6 +109,13 @@
                 android:textSize="18sp"
                 app:cornerRadius="28dp"/>
 
+            <!-- Google Sign In Button -->
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btnGoogleSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"/>
+
             <!-- Signup -->
             <TextView
                 android:id="@+id/tvGoToSignup"

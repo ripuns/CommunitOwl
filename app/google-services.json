@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "715655345458",
+    "project_id": "communityowl-fc0b8",
+    "storage_bucket": "communityowl-fc0b8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715655345458:android:458d43615b78a093e3d32b",
+        "android_client_info": {
+          "package_name": "com.example.communityowl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715655345458-mjf4oraq36ujqpemb9jn374siv7coe02.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqIxaXfN6KTJou6xgaMdKLIpMPttDqDW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715655345458-mjf4oraq36ujqpemb9jn374siv7coe02.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

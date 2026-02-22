@@ -10,6 +10,7 @@ constraintlayout = "2.2.1"
 googleServices = "4.4.4"
 firebaseBom = "34.9.0"
 playServicesAuth = "21.5.0"
+playServicesLocation = "21.3.0"
 sqlite = "2.4.0"
 
 [libraries]
@@ -23,6 +24,7 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
 play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 androidx-sqlite = { group = "androidx.sqlite", name = "sqlite", version.ref = "sqlite" }
 
 [plugins]

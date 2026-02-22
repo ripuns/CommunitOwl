@@ -43,6 +43,9 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.play.services.auth)
 
+    // Location
+    implementation(libs.play.services.location)
+
     // SQLite Helper for Inspector
     implementation(libs.androidx.sqlite)
 

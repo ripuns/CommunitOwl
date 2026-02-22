@@ -143,7 +143,7 @@ public class InfraActivity extends AppCompatActivity {
         } else {
             try {
                 File photoFile = createImageFile();
-                photoUri = FileProvider.getUriForFile(this, "com.example.communityowl.fileprovider", photoFile);
+                photoUri = FileProvider.getUriForFile(this, "com.example.communityowl.file provider", photoFile);
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 cameraLauncher.launch(intent);

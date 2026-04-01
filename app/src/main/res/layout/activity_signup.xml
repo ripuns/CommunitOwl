@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor">
@@ -15,39 +14,19 @@
         android:background="@drawable/header_gradient"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- App Title -->
-    <TextView
-        android:id="@+id/appTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:text="CommunityOwl"
-        android:textColor="@color/white"
-        android:textSize="32sp"
-        android:fontFamily="sans-serif-medium"
+    <!-- App Logo -->
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="20dp"
+        android:src="@color/app_logo_ref"
+        android:contentDescription="App Logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Subtitle -->
-    <TextView
-        android:id="@+id/appSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your Neighborhood, Protected."
-        android:textColor="@color/white"
-        android:alpha="0.85"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/appTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- Signup Title -->
-
     <!-- Signup Card -->
-
-
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,7 +34,7 @@
         app:cardCornerRadius="24dp"
         app:cardElevation="14dp"
         app:cardBackgroundColor="@color/cardBackground"
-        app:layout_constraintTop_toBottomOf="@id/appSubtitle"
+        app:layout_constraintTop_toBottomOf="@id/appLogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.45">
 

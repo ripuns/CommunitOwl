@@ -14,6 +14,20 @@
         android:background="@drawable/header_gradient"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <!-- Settings Button -->
+    <ImageButton
+        android:id="@+id/btnSettings"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="12dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_preferences"
+        android:contentDescription="Settings"
+        app:tint="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/btnLogout"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <!-- Logout Button -->
     <ImageButton
         android:id="@+id/btnLogout"
@@ -29,32 +43,44 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <!-- Title -->
-    <TextView
-        android:id="@+id/appTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="60dp"
-        android:text="CommunityOwl"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:fontFamily="sans-serif-medium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+<!--    <TextView-->
+<!--        android:id="@+id/appTitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="22dp"-->
+<!--        android:layout_marginTop="60dp"-->
+<!--        android:text="CommunityOwl"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="30sp"-->
+<!--        android:fontFamily="sans-serif-medium"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
 
-    <!-- Subtitle -->
-    <TextView
-        android:id="@+id/appSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your Neighborhood, Protected."
-        android:textColor="@color/white"
-        android:alpha="0.85"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@id/appTitle"
-        app:layout_constraintTop_toBottomOf="@id/appTitle"/>
+<!--    &lt;!&ndash; Subtitle &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/appSubtitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Your Neighborhood, Protected."-->
+<!--        android:textColor="@color/white"-->
+<!--        android:alpha="0.85"-->
+<!--        android:textSize="15sp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/appTitle"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/appTitle"/>-->
 
     <!-- Cards Container -->
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="229dp"
+        android:layout_height="200dp"
+        android:contentDescription="App Logo"
+        android:src="@color/app_logo_ref"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/cardContainer"
         android:layout_width="match_parent"
@@ -229,7 +255,56 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+    </LinearLayout>
 
+    <!-- Footer -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="4dp">
+
+            <ImageView
+                android:id="@+id/userPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profilepic"
+                android:contentDescription="User Photo" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ripun Sethia"
+                android:textColor="@color/textPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/userRegNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reg No: 23BIT0421"
+                android:textColor="@color/textSecondary"
+                android:textSize="14sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

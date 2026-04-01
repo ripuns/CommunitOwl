@@ -13,10 +13,19 @@
     <color name="cardBackground">#FFFFFF</color>
     <color name="textPrimary">#2D3436</color>
     <color name="textSecondary">#636E72</color>
+    <color name="edittext_bg">#F1F2F6</color>
+    <color name="edittext_stroke">#DCDDE1</color>
     
     <!-- Action Colors -->
     <color name="success">#00B894</color>
     <color name="danger">#D63031</color>
     <color name="warning">#FDCB6E</color>
     <color name="info">#74B9FF</color>
+
+    <!-- Gradient Colors -->
+    <color name="headerStartColor">#03A9F4</color>
+    <color name="headerEndColor">#0068C2</color>
+
+    <!-- Dynamic Logo -->
+    <color name="app_logo_ref">@drawable/app_logo</color>
 </resources>

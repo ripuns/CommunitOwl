@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Keep color names honest - white should be white -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Dark Palette -->
+    <color name="colorPrimary">#1B1F20</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#0984E3</color>
+    <color name="backgroundColor">#121212</color>
+    
+    <!-- UI Element Colors -->
+    <color name="cardBackground">#1E1E1E</color>
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#B0B0B0</color>
+    <color name="edittext_bg">#252525</color>
+    <color name="edittext_stroke">#333333</color>
+    
+    <!-- Action Colors -->
+    <color name="success">#00B894</color>
+    <color name="danger">#D63031</color>
+    <color name="warning">#FDCB6E</color>
+    <color name="info">#74B9FF</color>
+
+    <!-- Gradient Colors (Darker versions for Dark Mode) -->
+    <color name="headerStartColor">#1A1A1A</color>
+    <color name="headerEndColor">#000000</color>
+
+    <!-- Dynamic Logo -->
+    <color name="app_logo_ref">@drawable/logo_darkmode</color>
+</resources>

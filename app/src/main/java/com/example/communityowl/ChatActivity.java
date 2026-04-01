@@ -17,6 +17,7 @@ public class ChatActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     private final String DEFAULT_CHAT = "System: Welcome to the community chat!\n\nNeighbor 1: Is the park open today?\nNeighbor 2: Yes, it is! Just walked by.\n";
 
+    // this sets up the screen layout and connects all the buttons and text boxes when the chat starts
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,7 @@ public class ChatActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         databaseHelper = new DatabaseHelper(this);
 
+        // finding all the parts of our chat screen by their id
         ImageButton btnBack = findViewById(R.id.btnBack);
         chatDisplay = findViewById(R.id.chatDisplay);
         chatScroll = findViewById(R.id.chatScroll);
@@ -37,22 +39,27 @@ public class ChatActivity extends AppCompatActivity {
 
         btnSend.setOnClickListener(v -> {
             String message = messageInput.getText().toString().trim();
+            // only sending the message if the user actually typed something
             if (!message.isEmpty()) {
                 saveMessage(message);
+                // clearing the input box
                 messageInput.setText("");
+                // refreshing the chat display
                 loadChat();
             }
         });
     }
 
+    // this figures out who is sending the message and saves it to our local database
     private void saveMessage(String content) {
         FirebaseUser user = mAuth.getCurrentUser();
         String sender = (user != null && user.getEmail() != null) ? user.getEmail() : "Anonymous";
         
-        // Save to SQLite
+        // save to sqlite database
         databaseHelper.addMessage(sender, content);
     }
 
+    // this pulls all the old messages from the database and shows them on the screen, then scrolls to the bottom
     private void loadChat() {
         String history = databaseHelper.getAllMessages();
         if (history.isEmpty()) {
@@ -60,6 +67,7 @@ public class ChatActivity extends AppCompatActivity {
         } else {
             chatDisplay.setText(DEFAULT_CHAT + "\n" + history);
         }
+        // making sure the chat automatically scrolls down to show the newest messages
         chatScroll.post(() -> chatScroll.fullScroll(android.view.View.FOCUS_DOWN));
     }
 }
